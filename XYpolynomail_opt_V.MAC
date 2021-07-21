@@ -123,7 +123,7 @@ LL 0 1E9 0.01 1E-9 ;Ya4-Ya2>0
 A P YG -1 0 -1 0 4
 S P YG -1 0 -1 0 2
 
-M 0 2 COMPOSITE
+M 0 5 COMPOSITE;8th
 CD1 G 38 2
 CD2 G 40 2
 CD3 G 42 2
@@ -131,30 +131,46 @@ CD4 G 44 2
 CD5 G 46 2
 =1E9*Sqrt((CD1**2+CD2**2+CD3**2+CD4**2+CD5**2)/5)
 
-M 0 2 COMPOSITE
+M 0 5 COMPOSITE;7th
 CD1 G 30 2
 CD2 G 32 2
 CD3 G 34 2
 CD4 G 36 2
 =1E8*Sqrt((CD1**2+CD2**2+CD3**2+CD4**2)/4)
 
-M 0 2 COMPOSITE
+M 0 5 COMPOSITE;6th
 CD1 G 23 2
 CD2 G 25 2
 CD3 G 27 2
 CD4 G 29 2
 =1E7*Sqrt((CD1**2+CD2**2+CD3**2+CD4**2)/4)
 
-M 0 2 COMPOSITE
+M 0 5 COMPOSITE;5th
 CD1 G 17 2
 CD2 G 19 2
 CD3 G 21 2
 =1E6*Sqrt((CD1**2+CD2**2+CD3**2)/3)
 
-M 0 5 CLINK
-ADEF 2
-CD1 FILE 6
-= CD1
+M 0 3 COMPOSITE;4th
+CD1 G 12 2
+CD2 G 14 2
+CD3 G 16 2
+=1E4*Sqrt((CD1**2+CD2**2+CD3**2)/3)
+
+M 0 3 COMPOSITE;3th
+CD1 G 8 2
+CD2 G 10 2
+=1E3*Sqrt((CD1**2+CD2**2)/2)
+
+M 0 3 COMPOSITE;2th
+CD1 G 5 2
+CD2 G 7 2
+=100*Sqrt((CD1**2+CD2**2)/2)
+
+!M 0 10 CLINK
+!ADEF 2
+!CD1 FILE 6
+!= CD1
 M 0 5 CLINK
 ADEF 3
 CD1 FILE 6
@@ -174,7 +190,7 @@ S P YG 0 0 0 0 6
 LL 2 1E9 2.01 1E-9
 A P YG -1 0 0 0 6
 S P YG -1 0 0 0 5
-M 3.2 3 COMPOSITE
+M 3 3 COMPOSITE
 CD1 P YG 0 0 0 0 6
 CD2 P ZG 0 0 0 0 6
 CD3 P YG 0 0 0 0 5
@@ -183,9 +199,9 @@ CD4 P ZG 0 0 0 0 5
 
 
 ;eye relief
-LL 16 1E9 16.01 1E-9; Za2>16
+LL 17 1E9 17.01 1E-9; Za2>16
 A P ZG -1 0 -1 0 2
-LL 16 1E9 16.01 1E-9; Zb4>16
+LL 17 1E9 17.01 1E-9; Zb4>16
 A P ZG  1 0 -1 0 4
 LL -19 1E9 -18.99 1E-9; Za2<19
 S P ZG -1 0 -1 0 2
@@ -218,10 +234,10 @@ S P ZG -1 0 -1 0 5
 LL 1 1E9 1.01 1E-9 ;Ya5-Yb3>1
 A P YG -1 0 -1 0 5
 S P YG  1 0 -1 0 3
-LL 1 1E9 1.01 1E-9 ;Yc05-Yd03>1.5
-A P YG -1 0 -1 1 5
-S P YG  1 0 -1 1 3
- M 1 1
+!LL 1 1E9 1.01 1E-9 ;Yc05-Yd03>1.5
+!A P YG -1 0 -1 1 5
+!S P YG  1 0 -1 1 3
+ M 1 5
  A P YG -1 0 -1 1 5
  S P YG  1 0 -1 1 3
 
@@ -240,7 +256,7 @@ S P YG 1 0 -1 1 4
  S P YG 1 0 -1 1 4
  
 ;aberrations
-M 1.74 10 COMPOSITE
+M 1.74 20 COMPOSITE
 CD1 P XA -1 0  0  1 6
 CD2 P XA -1 0  0 -1 6
 CD3 P YA  1 0  0  0 6
@@ -248,12 +264,12 @@ CD4 P YA -1 0  0  0 6
 =(CD1-CD2)/(CD3-CD4)
 
 
-M 0 8 COMPOSITE ;dis_upper
+M 0 10 COMPOSITE ;dis_upper
 CD1 P YA 0 0 0 0 6
 CD2 P YA 1 0 0 0 6
 CD3 P YA 1 0 0 1 6
 =(CD3-CD2)/(CD2-CD1)
-M 0 8 COMPOSITE ;dis_down
+M 0 10 COMPOSITE ;dis_down
 CD1 P YA 0 0 0 0 6
 CD2 P YA -1 0 0 0 6
 CD3 P YA -1 0 0 1 6
@@ -261,105 +277,105 @@ CD3 P YA -1 0 0 1 6
 
 
 
-GNR 1 5 5 P   1     0      6
-GNR 1 3 5 P  0.75   0      6
-GNR 1 3 5 P  0.5    0      6
-GNR 1 3 5 P  0.25   0      6
-GNR 1 3 5 P   0     0      6
-GNR 1 3 5 P -0.25   0      6
-GNR 1 3 5 P -0.5    0      6
-GNR 1 3 5 P -0.75   0      6
-GNR 1 5 5 P  -1     0      6
-
-GNR 1 5 5 P   1     0.25   6
-GNR 1 5 5 P  0.75   0.25   6
-GNR 1 3 5 P  0.5    0.25   6
-GNR 1 3 5 P  0.25   0.25   6
-GNR 1 3 5 P   0     0.25   6
-GNR 1 3 5 P -0.25   0.25   6
-GNR 1 3 5 P -0.5    0.25   6
-GNR 1 5 5 P -0.75   0.25   6
-GNR 1 5 5 P  -1     0.25   6
-
-GNR 1 5 5 P   1     0.5    6
-GNR 1 5 5 P  0.75   0.5    6
-GNR 1 5 5 P  0.5    0.5    6
-GNR 1 3 5 P  0.25   0.5    6
-GNR 1 3 5 P   0     0.5    6
-GNR 1 3 5 P -0.25   0.5    6
-GNR 1 5 5 P -0.5    0.5    6
-GNR 1 5 5 P -0.75   0.5    6
-GNR 1 5 5 P  -1     0.5    6
-
-GNR 1 9 5 P   1     0.75   6
-GNR 1 5 5 P  0.75   0.75   6
-GNR 1 5 5 P  0.5    0.75   6
-GNR 1 5 5 P  0.25   0.75   6
-GNR 1 3 5 P   0     0.75   6
-GNR 1 5 5 P -0.25   0.75   6
-GNR 1 5 5 P -0.5    0.75   6
-GNR 1 5 5 P -0.75   0.75   6
-GNR 1 9 5 P  -1     0.75   6
-
-GNR 1 9 5 P   1     1      6
-GNR 1 9 5 P  0.75   1      6
-GNR 1 5 5 P  0.5    1      6
-GNR 1 5 5 P  0.25   1      6
-GNR 1 5 5 P   0     1      6
-GNR 1 5 5 P -0.25   1      6
-GNR 1 5 5 P -0.5    1      6
-GNR 1 9 5 P -0.75   1      6
-GNR 1 9 5 P  -1     1      6
-
-!GNO 1 0.13 5 P   1     0      6
-!GNO 1 0.13 5 P  0.75   0      6
-!GNO 1 0.13 5 P  0.5    0      6
-!GNO 1 0.10 5 P  0.25   0      6
-!GNO 1 0.10 5 P   0     0      6
-!GNO 1 0.10 5 P -0.25   0      6
-!GNO 1 0.13 5 P -0.5    0      6
-!GNO 1 0.13 5 P -0.75   0      6
-!GNO 1 0.13 5 P  -1     0      6
+!GNR 1 5 5 P   1     0      6
+!GNR 1 3 5 P  0.75   0      6
+!GNR 1 3 5 P  0.5    0      6
+!GNR 1 3 5 P  0.25   0      6
+!GNR 1 3 5 P   0     0      6
+!GNR 1 3 5 P -0.25   0      6
+!GNR 1 3 5 P -0.5    0      6
+!GNR 1 3 5 P -0.75   0      6
+!GNR 1 5 5 P  -1     0      6
 !
-!GNO 1 0.15 5 P   1     0.25   6
-!GNO 1 0.13 5 P  0.75   0.25   6
-!GNO 1 0.13 5 P  0.5    0.25   6
-!GNO 1 0.13 5 P  0.25   0.25   6
-!GNO 1 0.10 5 P   0     0.25   6
-!GNO 1 0.13 5 P -0.25   0.25   6
-!GNO 1 0.13 5 P -0.5    0.25   6
-!GNO 1 0.13 5 P -0.75   0.25   6
-!GNO 1 0.15 5 P  -1     0.25   6
+!GNR 1 5 5 P   1     0.25   6
+!GNR 1 5 5 P  0.75   0.25   6
+!GNR 1 3 5 P  0.5    0.25   6
+!GNR 1 3 5 P  0.25   0.25   6
+!GNR 1 3 5 P   0     0.25   6
+!GNR 1 3 5 P -0.25   0.25   6
+!GNR 1 3 5 P -0.5    0.25   6
+!GNR 1 5 5 P -0.75   0.25   6
+!GNR 1 5 5 P  -1     0.25   6
 !
-!GNO 1 0.15 5 P   1     0.5    6
-!GNO 1 0.15 5 P  0.75   0.5    6
-!GNO 1 0.13 5 P  0.5    0.5    6
-!GNO 1 0.13 5 P  0.25   0.5    6
-!GNO 1 0.13 5 P   0     0.5    6
-!GNO 1 0.13 5 P -0.25   0.5    6
-!GNO 1 0.13 5 P -0.5    0.5    6
-!GNO 1 0.15 5 P -0.75   0.5    6
-!GNO 1 0.15 5 P  -1     0.5    6
+!GNR 1 5 5 P   1     0.5    6
+!GNR 1 5 5 P  0.75   0.5    6
+!GNR 1 5 5 P  0.5    0.5    6
+!GNR 1 3 5 P  0.25   0.5    6
+!GNR 1 3 5 P   0     0.5    6
+!GNR 1 3 5 P -0.25   0.5    6
+!GNR 1 5 5 P -0.5    0.5    6
+!GNR 1 5 5 P -0.75   0.5    6
+!GNR 1 5 5 P  -1     0.5    6
 !
-!GNO 1 0.20 5 P   1     0.75   6
-!GNO 1 0.15 5 P  0.75   0.75   6
-!GNO 1 0.15 5 P  0.5    0.75   6
-!GNO 1 0.13 5 P  0.25   0.75   6
-!GNO 1 0.13 5 P   0     0.75   6
-!GNO 1 0.13 5 P -0.25   0.75   6
-!GNO 1 0.15 5 P -0.5    0.75   6
-!GNO 1 0.15 5 P -0.75   0.75   6
-!GNO 1 0.20 5 P  -1     0.75   6
+!GNR 1 9 5 P   1     0.75   6
+!GNR 1 5 5 P  0.75   0.75   6
+!GNR 1 5 5 P  0.5    0.75   6
+!GNR 1 5 5 P  0.25   0.75   6
+!GNR 1 3 5 P   0     0.75   6
+!GNR 1 5 5 P -0.25   0.75   6
+!GNR 1 5 5 P -0.5    0.75   6
+!GNR 1 5 5 P -0.75   0.75   6
+!GNR 1 9 5 P  -1     0.75   6
 !
-!GNO 1 0.25 5 P   1     1      6
-!GNO 1 0.20 5 P  0.75   1      6
-!GNO 1 0.15 5 P  0.5    1      6
-!GNO 1 0.13 5 P  0.25   1      6
-!GNO 1 0.13 5 P   0     1      6
-!GNO 1 0.13 5 P -0.25   1      6
-!GNO 1 0.15 5 P -0.5    1      6
-!GNO 1 0.20 5 P -0.75   1      6
-!GNO 1 0.20 5 P  -1     1      6
+!GNR 1 9 5 P   1     1      6
+!GNR 1 9 5 P  0.75   1      6
+!GNR 1 5 5 P  0.5    1      6
+!GNR 1 5 5 P  0.25   1      6
+!GNR 1 5 5 P   0     1      6
+!GNR 1 5 5 P -0.25   1      6
+!GNR 1 5 5 P -0.5    1      6
+!GNR 1 9 5 P -0.75   1      6
+!GNR 1 9 5 P  -1     1      6
+
+GNO 1 0.13 5 P   1     0      6
+GNO 1 0.13 5 P  0.75   0      6
+GNO 1 0.13 5 P  0.5    0      6
+GNO 1 0.10 5 P  0.25   0      6
+GNO 1 0.10 5 P   0     0      6
+GNO 1 0.10 5 P -0.25   0      6
+GNO 1 0.13 5 P -0.5    0      6
+GNO 1 0.13 5 P -0.75   0      6
+GNO 1 0.13 5 P  -1     0      6
+
+GNO 1 0.15 5 P   1     0.25   6
+GNO 1 0.13 5 P  0.75   0.25   6
+GNO 1 0.13 5 P  0.5    0.25   6
+GNO 1 0.13 5 P  0.25   0.25   6
+GNO 1 0.10 5 P   0     0.25   6
+GNO 1 0.13 5 P -0.25   0.25   6
+GNO 1 0.13 5 P -0.5    0.25   6
+GNO 1 0.13 5 P -0.75   0.25   6
+GNO 1 0.15 5 P  -1     0.25   6
+
+GNO 1 0.15 5 P   1     0.5    6
+GNO 1 0.15 5 P  0.75   0.5    6
+GNO 1 0.13 5 P  0.5    0.5    6
+GNO 1 0.13 5 P  0.25   0.5    6
+GNO 1 0.13 5 P   0     0.5    6
+GNO 1 0.13 5 P -0.25   0.5    6
+GNO 1 0.13 5 P -0.5    0.5    6
+GNO 1 0.15 5 P -0.75   0.5    6
+GNO 1 0.15 5 P  -1     0.5    6
+
+GNO 1 0.20 5 P   1     0.75   6
+GNO 1 0.15 5 P  0.75   0.75   6
+GNO 1 0.15 5 P  0.5    0.75   6
+GNO 1 0.13 5 P  0.25   0.75   6
+GNO 1 0.13 5 P   0     0.75   6
+GNO 1 0.13 5 P -0.25   0.75   6
+GNO 1 0.15 5 P -0.5    0.75   6
+GNO 1 0.15 5 P -0.75   0.75   6
+GNO 1 0.20 5 P  -1     0.75   6
+
+GNO 1 0.20 5 P   1     1      6
+GNO 1 0.20 5 P  0.75   1      6
+GNO 1 0.15 5 P  0.5    1      6
+GNO 1 0.13 5 P  0.25   1      6
+GNO 1 0.13 5 P   0     1      6
+GNO 1 0.13 5 P -0.25   1      6
+GNO 1 0.15 5 P -0.5    1      6
+GNO 1 0.20 5 P -0.75   1      6
+GNO 1 0.20 5 P  -1     1      6
 END
 
 DAMP 1000
