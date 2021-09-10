@@ -1,0 +1,17 @@
+!ON 78  	 	! use finer grid (118x118 points)
+PA3 LOOP COLOR 	 	! initialize PA3, request color boxes for output
+RZ1 -4 4 	 	! set the range of variable Z1
+RZ2 0.65 8.65 	 	! set the range of Z2
+RZ3 0 1  	! display results over this range of merit function values
+!NOSMOOTH 	 	 	! there will be steps in the output; do not smooth
+XLAB "X -4 4" ! define the label for the X-axis, which is variable Z1
+YLAB "Y 0.65 8.65" ! label for Y-axis, Z2
+ZLAB "AVG_MTF" 	 	! label for Z-axis, the final merit function
+LOOP	! tell PA3 to loop over the above raster of data
+6 XDC = Z1  	! set curvature 2 to the value of variable Z1
+6 YDC = Z2  	! and CV 3 to Z2, using the artificial-intelligence parser
+
+MTF P 0 1 0 0 P
+Z3 = FILE 7
+
+PA3		! tell PA3 to cycle to the next case.
